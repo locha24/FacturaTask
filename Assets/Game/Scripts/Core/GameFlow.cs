@@ -5,10 +5,6 @@ using Zenject;
 
 namespace Game.Core
 {
-    /// <summary>
-    /// Owns the game state machine: WaitingToStart -> Playing -> Win/Lose -> (tap) -> WaitingToStart.
-    /// Other systems subscribe to StateChanged / LevelReset instead of being referenced here.
-    /// </summary>
     public sealed class GameFlow : IInitializable, IDisposable
     {
         private const float RestartInputDelay = 0.4f;
@@ -44,7 +40,6 @@ namespace Game.Core
 
                 case GameState.Win:
                 case GameState.Lose:
-                    // Small delay so a tap meant for aiming doesn't instantly skip the result screen.
                     if (Time.unscaledTime - _finishedAt >= RestartInputDelay)
                         RestartLevel();
                     break;

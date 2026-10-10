@@ -4,7 +4,6 @@ using Zenject;
 
 namespace Game.Controls
 {
-    /// <summary>New Input System wrapper. '&lt;Pointer&gt;/press' covers both mouse and touch.</summary>
     public sealed class PointerInput : IPlayerInput, IInitializable, IDisposable
     {
         private readonly InputAction _press = new(
