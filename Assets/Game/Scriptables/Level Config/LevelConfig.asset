@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 618fcd9a6f077d34bbd1942cf035cce1, type: 3}
   m_Name: LevelConfig
   m_EditorClassIdentifier: Assembly-CSharp::Game.Configs.LevelConfig
-  _length: 300
-  _carSpeed: 8
+  _length: 200
+  _carSpeed: 10
   _carAcceleration: 6
   _carBraking: 12
+  _carMaxHealth: 100
+  _enemyCount: 70
+  _enemySpawnStartOffset: 60
+  _enemySpawnEndMargin: 15
+  _enemyLateralRange: 7

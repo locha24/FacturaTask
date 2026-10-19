@@ -15,10 +15,11 @@ MonoBehaviour:
   _yawLimit: 70
   _aimSensitivity: 150
   _aimSmoothTime: 0.08
-  _fireInterval: 0.15
-  _bulletSpeed: 50
-  _bulletRange: 60
+  _fireInterval: 0.28
+  _bulletSpeed: 90
+  _bulletRange: 50
   _bulletDamage: 1
+  _bulletRadius: 0.25
   _bulletHitMask:
     serializedVersion: 2
     m_Bits: 256

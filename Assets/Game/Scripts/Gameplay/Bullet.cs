@@ -30,7 +30,7 @@ namespace Game.Gameplay
             float step = _config.BulletSpeed * Time.deltaTime;
             Vector3 direction = transform.forward;
 
-            if (Physics.Raycast(transform.position, direction, out RaycastHit hit, step,
+            if (Physics.SphereCast(transform.position, _config.BulletRadius, direction, out RaycastHit hit, step,
                     _config.BulletHitMask, QueryTriggerInteraction.Ignore))
             {
                 IDamageable target = hit.collider.GetComponentInParent<IDamageable>();
