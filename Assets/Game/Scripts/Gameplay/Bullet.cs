@@ -1,24 +1,31 @@
 using Game.Combat;
 using Game.Configs;
+using Game.Infrastructure;
 using NTC.Pool;
 using UnityEngine;
+using Zenject;
 
 namespace Game.Gameplay
 {
-    public sealed class Bullet : MonoBehaviour
+    public sealed class Bullet : MonoBehaviour, IPooled
     {
         private TurretConfig _config;
         private TrailRenderer _trail;
         private float _travelled;
+
+        [Inject]
+        private void Construct(TurretConfig config)
+        {
+            _config = config;
+        }
 
         private void Awake()
         {
             _trail = GetComponentInChildren<TrailRenderer>();
         }
 
-        public void Launch(TurretConfig config)
+        public void OnSpawned()
         {
-            _config = config;
             _travelled = 0f;
 
             if (_trail != null)

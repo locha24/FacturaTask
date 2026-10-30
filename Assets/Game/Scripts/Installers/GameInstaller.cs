@@ -1,6 +1,7 @@
 using Game.Configs;
 using Game.Controls;
 using Game.Core;
+using Game.Infrastructure;
 using UnityEngine;
 using Zenject;
 
@@ -18,6 +19,9 @@ namespace Game.Installers
 
             Container.BindInterfacesTo<PointerInput>().AsSingle();
             Container.BindInterfacesAndSelfTo<GameFlow>().AsSingle();
+            Container.BindInterfacesTo<AppBootstrap>().AsSingle();
+
+            Container.Bind<PooledSpawner>().AsSingle();
         }
     }
 }

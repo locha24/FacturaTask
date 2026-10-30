@@ -404,7 +404,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6378502858412714435}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db31e03a6627b4e4ea7398396a32dd65, type: 3}
+  m_Script: {fileID: 11500000, guid: ec76308c78afc55408052dbfcc91babb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.Gameplay.MaterialSwitcher
   _renderers:

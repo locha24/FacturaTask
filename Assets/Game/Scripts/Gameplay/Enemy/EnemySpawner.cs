@@ -1,7 +1,7 @@
 using Game.Combat;
 using Game.Configs;
 using Game.Core;
-using NTC.Pool;
+using Game.Infrastructure;
 using UnityEngine;
 using Zenject;
 
@@ -15,14 +15,16 @@ namespace Game.Gameplay
 
         private GameFlow _flow;
         private LevelConfig _levelConfig;
+        private PooledSpawner _spawner;
 
         private Vector3 _carStart;
 
         [Inject]
-        private void Construct(GameFlow flow, LevelConfig levelConfig)
+        private void Construct(GameFlow flow, LevelConfig levelConfig, PooledSpawner spawner)
         {
             _flow = flow;
             _levelConfig = levelConfig;
+            _spawner = spawner;
         }
 
         private void Start()
@@ -41,8 +43,7 @@ namespace Game.Gameplay
 
         private void Respawn()
         {
-            if (NightPool.TryGetPoolByPrefab(_enemyPrefab, out NightGameObjectPool pool))
-                pool.DespawnAllClones();
+            _spawner.DespawnAll(_enemyPrefab.gameObject);
 
             Spawn();
         }
@@ -61,7 +62,7 @@ namespace Game.Gameplay
                 
                 Quaternion rotation = Quaternion.Euler(0f, 180f + Random.Range(-30f, 30f), 0f);
 
-                Enemy enemy = NightPool.Spawn(_enemyPrefab, new Vector3(x, _carStart.y, z), rotation);
+                Enemy enemy = _spawner.Spawn(_enemyPrefab, new Vector3(x, _carStart.y, z), rotation);
                 enemy.Init(_enemyConfig, _flow, _car);
             }
         }

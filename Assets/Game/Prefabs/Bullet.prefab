@@ -252,6 +252,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7349955993368111743}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6219046df1f340a469d67ad80d7766dc, type: 3}
+  m_Script: {fileID: 11500000, guid: 28b4dd686da2dbc458f26bbd61044e1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.Gameplay.Bullet

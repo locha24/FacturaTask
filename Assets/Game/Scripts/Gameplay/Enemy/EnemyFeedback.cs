@@ -1,5 +1,6 @@
-using NTC.Pool;
+using Game.Infrastructure;
 using UnityEngine;
+using Zenject;
 
 namespace Game.Gameplay
 {
@@ -10,6 +11,14 @@ namespace Game.Gameplay
         [SerializeField] private ParticleBurst _burstPrefab;
         [SerializeField, Min(0)] private int _hitParticles = 10;
         [SerializeField, Min(0)] private int _deathParticles = 40;
+
+        private PooledSpawner _spawner;
+
+        [Inject]
+        private void Construct(PooledSpawner spawner)
+        {
+            _spawner = spawner;
+        }
 
         public void PlayHit()
         {
@@ -29,7 +38,7 @@ namespace Game.Gameplay
 
         private void Emit(int count)
         {
-            ParticleBurst burst = NightPool.Spawn(_burstPrefab, transform.position, Quaternion.identity);
+            ParticleBurst burst = _spawner.Spawn(_burstPrefab, transform.position, Quaternion.identity);
             burst.Play(count, _renderer);
         }
     }

@@ -1,7 +1,7 @@
 using Game.Configs;
 using Game.Controls;
 using Game.Core;
-using NTC.Pool;
+using Game.Infrastructure;
 using UnityEngine;
 using Zenject;
 
@@ -15,6 +15,7 @@ namespace Game.Gameplay
         private IPlayerInput _input;
         private GameFlow _flow;
         private TurretConfig _config;
+        private PooledSpawner _spawner;
 
         private float _targetYaw;
         private float _currentYaw;
@@ -22,11 +23,12 @@ namespace Game.Gameplay
         private float _nextShotTime;
 
         [Inject]
-        private void Construct(IPlayerInput input, GameFlow flow, TurretConfig config)
+        private void Construct(IPlayerInput input, GameFlow flow, TurretConfig config, PooledSpawner spawner)
         {
             _input = input;
             _flow = flow;
             _config = config;
+            _spawner = spawner;
         }
 
         private void Start()
@@ -67,8 +69,7 @@ namespace Game.Gameplay
 
             _nextShotTime = Time.time + _config.FireInterval;
 
-            Bullet bullet = NightPool.Spawn(_bulletPrefab, _muzzle.position, _muzzle.rotation);
-            bullet.Launch(_config);
+            _spawner.Spawn(_bulletPrefab, _muzzle.position, _muzzle.rotation);
         }
 
         private void ResetTurret()
@@ -79,8 +80,7 @@ namespace Game.Gameplay
             _nextShotTime = 0f;
             transform.localRotation = Quaternion.identity;
             
-            if (NightPool.TryGetPoolByPrefab(_bulletPrefab, out NightGameObjectPool pool))
-                pool.DespawnAllClones();
+            _spawner.DespawnAll(_bulletPrefab.gameObject);
         }
     }
 }
