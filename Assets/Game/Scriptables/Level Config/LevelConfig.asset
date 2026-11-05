@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618fcd9a6f077d34bbd1942cf035cce1, type: 3}
+  m_Name: LevelConfig
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Configs.LevelConfig
+  _length: 200
+  _carSpeed: 10
+  _carAcceleration: 6
+  _carBraking: 12
+  _carMaxHealth: 100
+  _enemyCount: 30
+  _enemySpawnStartOffset: 60
+  _enemySpawnEndMargin: 15
+  _enemyLateralRange: 7
