@@ -6,9 +6,7 @@ namespace Game.UI
     public sealed class WorldHealthBarView : MonoBehaviour
     {
         [SerializeField] private GameObject _visual;
-        [Tooltip("Pivot on the left edge of the bar, scaled along X by the HP ratio")]
         [SerializeField] private Transform _fill;
-        [Tooltip("On: hidden at full and zero health (enemies). Off: always visible (car)")]
         [SerializeField] private bool _showOnlyWhenDamaged = true;
 
         private Health _health;

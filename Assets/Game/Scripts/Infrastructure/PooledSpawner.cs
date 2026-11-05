@@ -5,10 +5,6 @@ using Zenject;
 
 namespace Game.Infrastructure
 {
-    // Spawns from NightPool and makes the clones normal Zenject citizens: each clone is injected once,
-    // the first time it comes out of the pool, and then gets OnSpawned with its dependencies in place.
-    // (NightPool's own spawn callbacks run before that, and its instantiate event isn't raised for
-    // clones created beyond a pool's capacity, so neither can be used for injection.)
     public sealed class PooledSpawner
     {
         private readonly DiContainer _container;

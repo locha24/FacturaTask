@@ -9,7 +9,6 @@ namespace Game.Infrastructure
 
         public void Initialize()
         {
-            // Mobile defaults to 30 fps otherwise.
             QualitySettings.vSyncCount = 0;
             Application.targetFrameRate = TargetFrameRate;
         }
